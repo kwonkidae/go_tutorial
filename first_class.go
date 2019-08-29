@@ -34,3 +34,37 @@ func add(x int) func(y int) int {
 		return x + y
 	}
 }
+
+var holder = map[string]int{}
+
+func sum(a, b int) int {
+	c := a + b
+	holder[fmt.Sprintf("%d+%d", a, b)] = c
+	return c
+}
+
+func normalFactorial(num int) int {
+	result := 1
+	for ; num > 0; num-- {
+		result *= num
+	}
+	return result
+}
+
+func factorialRecursion(num int) int {
+	if num == 0 {
+		return 1
+	}
+	return num * factorialRecursion(num-1)
+}
+
+func factorialTailRec(num int) int {
+	return factorial(1, num)
+}
+
+func factorial(accumulator, val int) int {
+	if val == 1 {
+		return accumulator
+	}
+	return factorial(accumulator*val, val-1)
+}
