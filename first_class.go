@@ -10,6 +10,14 @@ func main() {
 		return len(it)
 	})
 	fmt.Println(out)
+
+	add10 := add(10)
+	add20 := add(20)
+	add30 := add(30)
+
+	fmt.Println(add10(5))
+	fmt.Println(add20(5))
+	fmt.Println(add30(5))
 }
 
 func mapForEach(arr []string, fn func(it string) int) []int {
@@ -18,4 +26,11 @@ func mapForEach(arr []string, fn func(it string) int) []int {
 		newArray = append(newArray, fn(it))
 	}
 	return newArray
+}
+
+// curring
+func add(x int) func(y int) int {
+	return func(y int) int {
+		return x + y
+	}
 }
