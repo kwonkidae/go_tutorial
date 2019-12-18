@@ -8,10 +8,6 @@ func greet(c chan string) {
 }
 
 func main() {
-	defer func() {
-		v := recover()
-		fmt.Println("recovered:", v)
-	}()
 	fmt.Println("main() started")
 
 	c := make(chan string)
@@ -22,6 +18,10 @@ func main() {
 	close(c)
 
 	c <- "Mike"
+	defer func() {
+		v := recover()
+		fmt.Println("recovered:", v)
+	}()
 	fmt.Println("main() stopped")
 
 }
