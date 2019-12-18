@@ -15,14 +15,18 @@ func main() {
 
 	go squares(c)
 
-	for {
-		val, ok := <-c
-		if ok == false {
-			fmt.Println(val, ok, "<-- loop broke!")
-			break
-		} else {
-			fmt.Println(val, ok)
-		}
+	// for {
+	// 	val, ok := <-c
+	// 	if ok == false {
+	// 		fmt.Println(val, ok, "<-- loop broke!")
+	// 		break
+	// 	} else {
+	// 		fmt.Println(val, ok)
+	// 	}
+	// }
+
+	for val := range c {
+		fmt.Println(val)
 	}
 
 	fmt.Println("main() stopped")
